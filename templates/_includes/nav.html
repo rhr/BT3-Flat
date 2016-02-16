@@ -1,7 +1,9 @@
 <!-- Main Nav -->
 <header id="header" style="margin-top:0">
 
-  <nav class="navbar navbar-inverse" role="navigation">
+  <div id="nav-wrapper">
+  <nav id="nav" class="navbar navbar-inverse" role="navigation">
+    <div class="navbar-inner">
     <div class="container">
 
       <!-- Mobile Menu Button -->
@@ -19,25 +21,17 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
         <!-- Fullscreen Button - Unavailable for IE -->
-        <a href="#" class="btn-fullscreen"><i class="fa fa-external-link"></i></a>
+        <!-- <a href="#" class="btn-fullscreen"><i class="fa fa-external-link"></i></a> -->
 
         <ul class="nav navbar-nav navbar-right">
           <!-- If the user wants to make articles the home page then remove blog link, and make about and work links point to old home page. -->
-            {% if ARTICLES_HOME_PAGE %}
-            <li><a href="{{SITEURL}}/">Blog</a></li>
-            <li><a href="{{SITEURL}}/about.html#about">About</a></li>
-            <li><a href="{{SITEURL}}/about.html#about">Work</a></li>
-          <!-- Otherwise, use the theme defaults. -->
-          {% else %}
-            <li><a href="{{SITEURL}}/index.html#home">Home</a></li>
-            <li><a href="{{SITEURL}}/index.html#about">About</a></li>
-            {% if WORK_DESCRIPTION %}
-            <li><a href="{{SITEURL}}/index.html#work">Work</a></li>
-            {% endif %}
-            {% if articles %}
-            <li><a href="{{SITEURL}}/blog.html">Blog</a></li>
-            {% endif %}
+          <li><a href="{{SITEURL}}/index.html#home">Home</a></li>
+          <li><a href="{{SITEURL}}/index.html#about" class="scrollTo">About</a></li>
+          <li><a href="{{SITEURL}}/index.html#publications">Publications</a></li>
+          {% if articles %}
+          <li><a href="{{SITEURL}}/blog.html">Blog</a></li>
           {% endif %}
+
           {% if LINKS %}
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Links <b class="caret"></b></a>
@@ -53,6 +47,8 @@
       <!-- /.navbar-collapse -->
 
     </div>
+    </div>
   </nav>
+  </div>
 </header>
 <!-- /Main Nav -->

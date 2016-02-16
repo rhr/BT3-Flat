@@ -13,7 +13,7 @@
             {% if COPYRIGHT %}
             <br />{{ COPYRIGHT }}
             {% else %}
-            <br />2015 &copy; All Rights Reserved.
+            <br />2016 &copy; All Rights Reserved.
             {% endif %}
         </div>
 
@@ -117,3 +117,14 @@
     } catch( err ) {}
     </script><noscript><p><img src="http://{{ PIWIK_URL }}/piwik.php?idsite={{ PIWIK_SITE_ID }}" style="border:0" alt="" /></p></noscript>
 {% endif %}
+
+<script type="text/javascript">
+$(window).load(function() {      
+    $('#nav-wrapper').height($("#nav").height());
+    $('#nav').affix({
+	offset: {
+            top: $('#nav').offset().top
+	}
+    });
+});
+</script>

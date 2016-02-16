@@ -176,6 +176,22 @@ section.alternate.arrow-down {
   display:none;
   /* visible via javascript */
 }
+
+#nav.affix {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+}
+
+#nav > .navbar-inner {
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -o-border-radius: 0;
+}
+
 /** 03. Slider
 **************************************************************** **/
  #home.full-screen {
@@ -224,8 +240,8 @@ section.alternate.arrow-down {
 }
 #home .image-caption h1, #home .image-caption h2 {
   font-family:'Open Sans', sans-serif;
-  font-weight:800;
-  font-size:600%;
+  font-weight:600;
+  font-size:500%;
   line-height:95%;
   text-transform:uppercase;
   text-shadow:none;

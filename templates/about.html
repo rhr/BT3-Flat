@@ -14,14 +14,17 @@
             <hr /><hr />
             <div class="inner">
                 <h2 class="bigtext strtoupper nomargin">{{ SITENAME|e }}</h2>
+		<h3 style="color:white;padding-top:1em;font-weight:500">
+		  {{ABOUT_TITLE}}
+		</h3>
             </div>
             <hr /><hr />
             </div>
             <span class="overlay"></span>
-            {% if HEADER_IMAGE  %}
-            <div style="background-image: url('{{HEADER_IMAGE}}');" class="fullscreen-img"></div>
-            {%else%}
+            {% if BACKGROUND_IMAGE  %}
             <div style="background-image: url('{{ BACKGROUND_IMAGE }}');" class="fullscreen-img"></div>
+            {%elif HEADER_IMAGE %}
+            <div style="background-image: url('{{HEADER_IMAGE}}');" class="fullscreen-img"></div>
             {% endif %}           
 
         </li>
@@ -32,27 +35,28 @@
     </section>
     <!-- /HOME -->
 
-
-
     <!-- Main Nav -->
         {% include "_includes/nav.html" %}
-
     <!-- /Main Nav -->
 
     <!-- ABOUT -->
     <section id="about">
     <div class="container">
+        {% if ABOUT_TITLE %}
         <header class="text-center">
-        <h1>ABOUT</h1>
+        <h1>{{ABOUT_TITLE}}</h1>
         </header>
-
-        <div class="divider"><!-- lines divider --></div>
-
-        {% if PERSONAL_INFO %}
-        <article class="text-center big-paragraph">
-            <p>{{PERSONAL_INFO}}</p>
-        </article>
+        <!-- <div class="divider"><\!-- lines divider -\-></div> -->
         {% endif %}
+
+        <article class="big-paragraph">
+	  <span style="font-weight:500">How are species related, how
+	  have they evolved, why they occur where they do?</span> We study
+	  these questions mostly in plants, especially in the Hengduan
+	  Mountains of China and adjacent regions. We also tackle
+	  conceptual and methodological issues in phylogenetics and
+	  macroevolution.
+        </article>
 
         {% if PERSONAL_PHOTO %}
         <div class="me-picture text-center">
@@ -62,54 +66,18 @@
         </div>
         {% endif %}
 
-        <!-- <article>
-        <div class="row text-left"> -->
-
-            <!-- Passion -->
-        <!--  <div class="col-md-4">
-            <h3>Passion</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed, dignissim pretium nunc. Nam et lacus neque. Ut enim massa, sodales tempor convallis et, iaculis ac massa. Etiam suscipit nisl eget lorem pellentesque quis iaculis mi mattis.</p>
-            </div> -->
-
-
-            <!-- Precision -->
-            <!-- <div class="col-md-4">
-            <h3>Precision</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed, dignissim pretium nunc. Nam et lacus neque. Ut enim massa, sodales tempor convallis et, iaculis ac massa. Etiam suscipit nisl eget lorem pellentesque quis iaculis mi mattis.</p>
-            </div> -->
-
-
-            <!-- Simplicity -->
-            <!-- <div class="col-md-4">
-            <h3>Simplicity</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed, dignissim pretium nunc. Nam et lacus neque. Ut enim massa, sodales tempor convallis et, iaculis ac massa. Etiam suscipit nisl eget lorem pellentesque quis iaculis mi mattis.</p>
-            </div> -->
-
-        <!-- </div>
-        </article> -->
-
     </div>
     </section>
     <!-- /ABOUT -->
 
-    {% if WORK_DESCRIPTION %}
-    <!-- WORK -->
-    <section id="work" class="alternate arrow-down">
+    <!-- publications -->
+    <section id="publications" class="alternate arrow-down">
     <div class="container">
         <header class="text-center">
-        <h1>MY WORK</h1>
+        <h1>Publications</h1>
         </header>
 
         <div class="divider"><!-- lines divider --></div>
-
-        {% if WORK_DESCRIPTION %}
-        <article>
-        <p>
-            {{WORK_DESCRIPTION}}
-        </p>
-        </article>
-        {% endif %}
-
 
         <div id="portfolio" class="text-center animate_fade_in">
 
@@ -117,107 +85,19 @@
 
             <ul class="sort-destination isotope" data-sort-id="isotope-list">
 
-            {% for work_type, work_cover_link, work_title, work_description, work_link in WORK_LIST %}
-                {% if work_type == 'link' %}
-                <li class="isotope-item col-sm-6 col-md-4 brand"><!-- item -->
-                    <a class="external" href="{{work_link}}" target="_blank">
-                    <img src="{{work_cover_link}}" class="img-responsive" alt="img" />
-                    <div class="caption">
-                        <i class="rounded fa fa-link"></i>
-                        <h3>{{work_title}}</h3>
-                        <p>{{work_description}}</p>
-                    </div>
-                    </a>
-                </li>
-                {% endif %}
+            {% for key, year, text, bibtex, pdf, slides, poster in publications %}
+	    <li id="{{ key }}">{{ text }}
+	      [&nbsp;<a href="javascript:disp('{{ bibtex|replace('\n', '\\n')|escape|forceescape }}');">Bibtex</a>&nbsp;]
+	      {% for label, target in [('PDF', pdf), ('Slides', slides), ('Poster', poster)] %}
+	      {{ "[&nbsp;<a href=\"%s\">%s</a>&nbsp;]" % (target, label) if target }}
+	      {% endfor %}
+	    </li>
             {% endfor %}
-
-            <!-- item -->
-            <!-- <li class="isotope-item col-sm-6 col-md-4 image">
-                <a class="popup-image" href="http://stepofweb.gweb.io/.templates/IsisOne/HTML/assets/images/preview/content/portfolio/p1.jpg">
-                <img src="http://stepofweb.gweb.io/.templates/IsisOne/HTML/assets/images/preview/content/portfolio/p1.jpg" class="img-responsive" alt="img" />
-                <div class="caption">
-                    <i class="rounded fa fa-camera"></i>
-                    <h3>PROJECT TITLE</h3>
-                    <p>Image Popup</p>
-                </div>
-                </a>
-            </li> -->
-
-            <!-- item -->
-            <!-- <li class="isotope-item col-sm-6 col-md-4 video">
-                <a class="popup-video" href="http://www.youtube.com/watch?v=kh29_SERH0Y?rel=0">
-                <img src="http://stepofweb.gweb.io/.templates/IsisOne/HTML/assets/images/preview/content/portfolio/p2.jpg" class="img-responsive" alt="img" />
-                <div class="caption">
-                    <i class="rounded fa fa-film"></i>
-                    <h3>PROJECT TITLE</h3>
-                    <p>Youtube Videofdafdsf
-                    fadsfaf
-                    fasdfadsfa
-                    fasdfadf
-                    afadsfa</p>
-                </div>
-                </a>
-            </li> -->
-
-            <!-- item -->
-            <!-- <li class="isotope-item col-sm-6 col-md-4 video brand">
-                <a class="popup-video" href="http://vimeo.com/23630702">
-                <img src="http://stepofweb.gweb.io/.templates/IsisOne/HTML/assets/images/preview/content/portfolio/p3.jpg" class="img-responsive" alt="img" />
-                <div class="caption">
-                    <i class="rounded fa fa-film"></i>
-                    <h3>PROJECT TITLE</h3>
-                    <p>Vimeo Video</p>
-                </div>
-                </a>
-            </li> -->
-
-            <!-- item -->
-            <!-- <li class="isotope-item col-sm-6 col-md-4 brand">
-                <a class="external ajax-project" href="project-external-1.html">
-                <img src="http://stepofweb.gweb.io/.templates/IsisOne/HTML/assets/images/preview/content/portfolio/p4.jpg" class="img-responsive" alt="img" />
-                <div class="caption">
-                    <i class="rounded fa fa-link"></i>
-                    <h3>PROJECT TITLE</h3>
-                    <p>External Project 1</p>
-                </div>
-                </a>
-            </li> -->
-
-            <!-- item -->
-            <!-- <li class="isotope-item col-sm-6 col-md-4 brand">
-                <a class="external ajax-project" href="project-external-2.html">
-                <img src="http://stepofweb.gweb.io/.templates/IsisOne/HTML/assets/images/preview/content/portfolio/p5.jpg" class="img-responsive" alt="img" />
-                <div class="caption">
-                    <i class="rounded fa fa-link"></i>
-                    <h3>PROJECT TITLE</h3>
-                    <p>External Project 2</p>
-                </div>
-                </a>
-            </li> -->
-
-            <!-- item -->
-            <!-- <li class="isotope-item col-sm-6 col-md-4 brand">
-                <a class="external ajax-project" href="project-external-3.html">
-                <img src="http://stepofweb.gweb.io/.templates/IsisOne/HTML/assets/images/preview/content/portfolio/p6.jpg" class="img-responsive" alt="img" />
-                <div class="caption">
-                    <i class="rounded fa fa-link"></i>
-                    <h3>PROJECT TITLE</h3>
-                    <p>External Project 3</p>
-                </div>
-                </a>
-            </li> -->
-
             </ul>
         </div>
-
         </div>
-
-
     </div>
     </section>
-    <!-- /WORK -->
-    {% endif %}
 
     {% if articles %}
     <!-- BLOG -->
