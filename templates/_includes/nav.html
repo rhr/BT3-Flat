@@ -11,7 +11,7 @@
 
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
-        <a class="navbar-brand scrollTo" href="#home">
+        <a class="navbar-brand" href="{{SITEURL}}/index.html#home">
           <img src="{{ HEADER_IMAGE }}" alt="" width="50" height="50" />
           <span class="hidden-xs">{{ SITENAME|e }}</span>
         </a>
@@ -26,10 +26,11 @@
         <ul class="nav navbar-nav navbar-right">
           <!-- If the user wants to make articles the home page then remove blog link, and make about and work links point to old home page. -->
           <li><a href="{{SITEURL}}/index.html#home">Home</a></li>
-          <li><a href="{{SITEURL}}/index.html#about" class="scrollTo">About</a></li>
+          <li><a href="{{SITEURL}}/index.html#about">About</a></li>
+          <li><a href="{{SITEURL}}/index.html#people">People</a></li>
           <li><a href="{{SITEURL}}/index.html#publications">Publications</a></li>
           {% if articles %}
-          <li><a href="{{SITEURL}}/blog.html">Blog</a></li>
+          <li><a href="{{SITEURL}}/index.html#blog">Blog</a></li>
           {% endif %}
 
           {% if LINKS %}
