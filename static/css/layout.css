@@ -423,10 +423,16 @@ footer a.toTop {
   #portfolio .isotope-item {
     max-width:280px;
   }
+  section {
+      padding-top:145px;
+  }
 }
 @media only screen and (max-width: 640px) {
   #portfolio .isotope-item {
     max-width:360px;
+  }
+  section {
+      padding-top:145px;
   }
 }
 /** 14. Responsive
@@ -434,6 +440,7 @@ footer a.toTop {
  @media only screen and (max-width: 768px) {
   section {
     text-align:center;
+    padding-top:145px;
   }
   #home .image-caption h1, #home .image-caption h2 {
     font-size:450%;
