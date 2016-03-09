@@ -86,7 +86,8 @@ section.arrow-down {
   background:#ffffff url('../images/down_white.png') no-repeat top center
 }
 section.alternate {
-  background:#F6F6F6;
+    background:#F6F6F6;
+    color: black;
 }
 section.alternate.arrow-down {
   background:#F6F6F6 url('../img/down_alternate.png') no-repeat top center
@@ -320,6 +321,20 @@ section.alternate.arrow-down {
   width:100%;
   z-index:0;
 }
+
+#code p {
+    padding-top:0px;
+    padding-bottom:0.5em;
+}
+
+#code div.row {
+    margin-bottom:1.5em;
+}
+
+#people div.row {
+    margin-bottom:1.5em;
+}
+
 /** 11. Footer
  **************************************************************** **/
  footer {
@@ -414,7 +429,7 @@ footer a.toTop {
     margin-bottom:10px;
 }
 
-#publications a {
+a {
     font-weight:400;
 }
 
